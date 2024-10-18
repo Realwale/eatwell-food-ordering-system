@@ -5,9 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.eatwell.ordering</groupId>
-        <artifactId>food-ordering-system</artifactId>
+        <artifactId>order-service</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../../pom.xml</relativePath>
     </parent>
 
     <artifactId>order-container</artifactId>
@@ -16,22 +15,27 @@
         <dependency>
             <groupId>com.eatwell.ordering</groupId>
             <artifactId>order-domain-core</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.eatwell.ordering</groupId>
             <artifactId>order-application</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.eatwell.ordering</groupId>
             <artifactId>order-application-service</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.eatwell.ordering</groupId>
             <artifactId>order-messaging</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.eatwell.ordering</groupId>
             <artifactId>order-data-access</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 
