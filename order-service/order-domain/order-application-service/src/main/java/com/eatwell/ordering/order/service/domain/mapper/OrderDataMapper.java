@@ -5,6 +5,7 @@ import com.eatwell.ordering.domain.valueobject.*;
 import com.eatwell.ordering.order.service.domain.dto.create.req.CreateOrderCommand;
 import com.eatwell.ordering.order.service.domain.dto.create.req.OrderAddress;
 import com.eatwell.ordering.order.service.domain.dto.create.resp.CreateOrderResp;
+import com.eatwell.ordering.order.service.domain.dto.track.resp.TrackOrderResp;
 import com.eatwell.ordering.order.service.domain.entity.Product;
 import com.eatwell.ordering.order.service.domain.entity.StreetAddress;
 import com.eatwell.ordering.order.service.domain.entity.order.Order;
@@ -41,6 +42,16 @@ public class OrderDataMapper {
                 .build();
     }
 
+
+
+    public TrackOrderResp orderToTrackOrderResponse(Order order){
+        return TrackOrderResp.builder()
+                .orderTrackingId(order.getTrackingId().getValue())
+                .orderStatus(order.getOrderStatus())
+                .failureMessages(order.getFailureMessages())
+                .build();
+    }
+
     private List<OrderItem> orderItemToOrderItemEntities(@NotNull List<com.eatwell.ordering.order.service.domain.dto.create.req.OrderItem> item) {
         return item.stream()
                 .map(orderItem ->
@@ -52,6 +63,7 @@ public class OrderDataMapper {
                             .build()
                 ).collect(Collectors.toList());
     }
+
 
     private StreetAddress orderAddressToStreetAddress(@NotNull OrderAddress address) {
         return new StreetAddress(
