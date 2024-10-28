@@ -1,0 +1,1 @@
+infrastructure/docker-compose/volumes/zookeeper/transactions/version-2/log.1 filter=lfs diff=lfs merge=lfs -text
