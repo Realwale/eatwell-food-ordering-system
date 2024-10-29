@@ -18,7 +18,7 @@ public class KafkaConsumerConfigData {
     private Boolean batchListener;
     private Boolean autoStartup;
     private Integer concurrencyLevel;
-    private Integer sessionTimeOutMs;
+    private Integer sessionTimeoutMs;
     private Integer heartbeatIntervalMs;
     private Integer maxPollIntervalMs;
     private Long pollTimeoutMs;
