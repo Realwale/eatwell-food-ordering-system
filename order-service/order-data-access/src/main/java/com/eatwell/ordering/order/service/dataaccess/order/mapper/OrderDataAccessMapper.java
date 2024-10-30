@@ -10,6 +10,7 @@ import com.eatwell.ordering.order.service.domain.entity.order.Order;
 import com.eatwell.ordering.order.service.domain.entity.order.OrderItem;
 import com.eatwell.ordering.order.service.domain.valueobject.OrderItemId;
 import com.eatwell.ordering.order.service.domain.valueobject.TrackingId;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
 
 import static com.eatwell.ordering.order.service.domain.entity.order.Order.FAILURE_MESSAGE_DELIMITER;
 
+@Component
 public class OrderDataAccessMapper {
 
     public OrderEntity orderToOrderEntity(Order order){

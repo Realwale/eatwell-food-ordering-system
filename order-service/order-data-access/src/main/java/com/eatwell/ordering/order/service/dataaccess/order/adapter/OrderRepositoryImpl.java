@@ -5,9 +5,11 @@ import com.eatwell.ordering.order.service.dataaccess.order.repository.OrderJpaRe
 import com.eatwell.ordering.order.service.domain.entity.order.Order;
 import com.eatwell.ordering.order.service.domain.ports.output.repository.OrderRepository;
 import com.eatwell.ordering.order.service.domain.valueobject.TrackingId;
+import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
+@Component
 public class OrderRepositoryImpl implements OrderRepository {
 
     private final OrderJpaRepository orderJpaRepository;
