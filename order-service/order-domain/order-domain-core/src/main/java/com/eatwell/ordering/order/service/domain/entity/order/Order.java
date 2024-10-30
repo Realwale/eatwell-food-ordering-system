@@ -12,8 +12,8 @@ import java.util.UUID;
 
 public class Order extends AggregateRoot<OrderId> {
 
-    private final RestaurantId restaurantId;
     private final CustomerId customerId;
+    private final RestaurantId restaurantId;
     private final StreetAddress deliveryAddress;
     private final Money price;
     private final List<OrderItem> items;
@@ -21,6 +21,8 @@ public class Order extends AggregateRoot<OrderId> {
     private TrackingId trackingId;
     private OrderStatus orderStatus;
     private List<String> failureMessages;
+
+    public static final String FAILURE_MESSAGE_DELIMITER = ",";
 
 
     public void initOrder() {
@@ -120,46 +122,47 @@ public class Order extends AggregateRoot<OrderId> {
     }
 
 
-    private Order(Builder builder) {
-        super.setId(builder.orderId);
-        restaurantId = builder.restaurantId;
-        customerId = builder.customerId;
-        deliveryAddress = builder.deliveryAddress;
-        price = builder.price;
-        items = builder.items;
-        trackingId = builder.trackingId;
-        orderStatus = builder.orderStatus;
-        failureMessages = builder.failureMessages;
-    }
-
     public static Builder builder() {
         return new Builder();
     }
 
-
-    public RestaurantId getRestaurantId() {
-        return restaurantId;
+    private Order(Builder builder) {
+        super.setId(builder.orderId);
+        customerId = builder.customerId;
+        restaurantId = builder.restaurantId;
+        price = builder.price;
+        trackingId = builder.trackingId;
+        deliveryAddress = builder.deliveryAddress;
+        items = builder.items;
+        orderStatus = builder.orderStatus;
+        failureMessages = builder.failureMessages;
     }
+
 
     public CustomerId getCustomerId() {
         return customerId;
     }
 
-    public StreetAddress getDeliveryAddress() {
-        return deliveryAddress;
+    public RestaurantId getRestaurantId() {
+        return restaurantId;
     }
 
     public Money getPrice() {
         return price;
     }
 
+    public TrackingId getTrackingId() {
+        return trackingId;
+    }
+
+    public StreetAddress getDeliveryAddress() {
+        return deliveryAddress;
+    }
+
     public List<OrderItem> getItems() {
         return items;
     }
 
-    public TrackingId getTrackingId() {
-        return trackingId;
-    }
 
     public OrderStatus getOrderStatus() {
         return orderStatus;
@@ -172,12 +175,12 @@ public class Order extends AggregateRoot<OrderId> {
 
     public static final class Builder {
         private OrderId orderId;
-        private RestaurantId restaurantId;
         private CustomerId customerId;
-        private StreetAddress deliveryAddress;
+        private RestaurantId restaurantId;
         private Money price;
-        private List<OrderItem> items;
         private TrackingId trackingId;
+        private StreetAddress deliveryAddress;
+        private List<OrderItem> items;
         private OrderStatus orderStatus;
         private List<String> failureMessages;
 
@@ -189,13 +192,13 @@ public class Order extends AggregateRoot<OrderId> {
             return this;
         }
 
-        public Builder restaurantId(RestaurantId val) {
-            restaurantId = val;
+        public Builder customerId(CustomerId val) {
+            customerId = val;
             return this;
         }
 
-        public Builder customerId(CustomerId val) {
-            customerId = val;
+        public Builder restaurantId(RestaurantId val) {
+            restaurantId = val;
             return this;
         }
 
